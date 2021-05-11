@@ -136,3 +136,16 @@ env_jupyter_39/
 
 #jupyther
 .ipynb_checkpoints/
+
+# LaTeX
+*.zip
+*.lot
+*.out
+*.toc
+*.gz
+*.lof
+*.fls
+*.fdb_latexmk
+*.blg
+*.bbl
+*.aux
