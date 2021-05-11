@@ -127,3 +127,12 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+#vscode
+.vscode/
+
+#pythonEnv
+env_jupyter_39/
+
+#jupyther
+.ipynb_checkpoints/

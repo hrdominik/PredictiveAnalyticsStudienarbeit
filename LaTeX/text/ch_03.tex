@@ -1,0 +1,44 @@
+\chapter{Implementation}
+
+\section{Lorem Ipsum}
+
+\lipsum[11-15]
+
+\section{Different citation styles}
+
+\subsection{Subsection one}
+
+\begin{itemize}
+    \item citation in parentheses: \citep{muller2017beyond}\\
+    Command: \texttt{\textbackslash citep\{muller2017beyond\}}
+    
+    \item ... with added text after citation: \citep[][p.15]{muller2017beyond}\\
+    Command: \texttt{\textbackslash citep[][p.15]\{muller2017beyond\}}
+    
+    \item ... with added text before citation: \citep[see][]{muller2017beyond}\\
+    Command: \texttt{\textbackslash citep[see][]\{muller2017beyond\}}
+    
+    \item ... with suppressed parentheses: \citealp{muller2017beyond}\\
+    Command: \texttt{\textbackslash citealp\{muller2017beyond\}}
+    
+    \item ... multiple authors: \citep{muller2017beyond, debertoli2014comparing}\\
+    Command: \texttt{\textbackslash citep\{muller2017beyond, debertoli2014comparing\}}
+    
+    \item author not in parentheses: \citet{muller2017beyond}\\
+    Command: \texttt{\textbackslash citet\{muller2017beyond\}}
+    
+    \item ... with suppressed parentheses: \citealt{muller2017beyond}\\
+    Command: \texttt{\textbackslash citealt\{muller2017beyond\}}
+    
+    \item ... multiple authors: \citet{muller2017beyond, debertoli2014comparing}\\
+    Command: \texttt{\textbackslash citet\{muller2017beyond, debertoli2014comparing\}}
+    
+    \item only author: \citeauthor{muller2017beyond}\\
+    Command: \texttt{\textbackslash citeauthor\{muller2017beyond\}}
+    
+    \item only year: \citeyear{muller2017beyond}\\
+    Command: \texttt{\textbackslash citeyear{muller2017beyond}}
+    
+    \item ... in parentheses: \citeyearpar{muller2017beyond}\\
+    Command: \texttt{\textbackslash citeyearpar\{muller2017beyond\}}
+\end{itemize}
