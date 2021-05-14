@@ -1,6 +1,6 @@
 % HIER BITTE AUSFÜLLEN:
 
-\newcommand{\abschlussarbeit}{Studienarbeit} % Bachelorarbeit / Masterarbeit
+\newcommand{\abschlussarbeit}{Exposé zur Studienarbeit} % Bachelorarbeit / Masterarbeit
 \newcommand{\zweitpruefer}{Prof. Dr. Erika Mustermann} % Zweitprüfer
 
 \newcommand{\sprache}{german} % Deutsch: german / Englisch: english
@@ -75,8 +75,6 @@
 \renewcommand{\textfraction}{0.1} % Anteil einer Seite, die mindestens Text sein muss (default 0.2)
 \renewcommand{\floatpagefraction}{0.75} % Anteil einer Seite, die ein Float einnehmen darf, ohne auf die nächste Seite gesetzt zu werden (default 0.5)
 
-\usepackage{lipsum}
-
 % Begin
 \begin{document}
 
@@ -87,12 +85,6 @@
 \input{title} 
 \cleardoublepage
 
-\input{erklaerung}
-\cleardoublepage
-
-\input{text/abstract}
-\cleardoublepage
-
 \pagestyle{scrheadings}
 \clearscrheadfoot
 \ohead{\headmark}
@@ -100,30 +92,10 @@
 
 \frontmatter
 
-\tableofcontents
-\cleardoublepage
-
-\listoffigures
-\cleardoublepage
-
-\listoftables
-\cleardoublepage
-
 % Thesis
 \mainmatter
-\input{text/ch_01}
-\input{text/ch_02}
-\input{text/ch_03}
-\input{text/ch_04}
-\input{text/ch_05}
+\input{text/expose}
 
-% Bibliography
-\newpage
-\addcontentsline{toc}{chapter}{Bibliography} 
-\bibliography{bibliography}
-
-% Appendix (if required...)
-% \input{text/appendix}
 
 % End
 \end{document}
