@@ -1,6 +1,6 @@
 # PredictiveAnalyticsStudienarbeit
 Predictive Analytics Studienarbeit - UPB: Daily Financial News for 6000+ Stocks
-@author: @
+@author: @kasten4444
 @author: @hrdominik
 # SetUp
 https://code.visualstudio.com/docs/python/jupyter-support <br />
