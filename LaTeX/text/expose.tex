@@ -8,25 +8,43 @@ Daily Financial News for 6000+ Stocks
 Der Datensatz liefert rund 1.410.000 Überschriften von Internetartikeln, über die Entwicklung von zugeordneten Aktien, welche an der Amerikanischen Börse notiert sind.\\
 Zu beachten ist, dass die Internetartikel hauptsächlich von auf benzinga.com veröffentlicht wurden, dabei bestehen die Artikel häufig nur aus den Überschriften oder einer Sammlung von aktuellen Zahlen der Aktie(n).
 
-Ziel der Studienarbeit ist es, die Headlines im ersten Schritt mittels eines Algorithmus (bspw. Topic Modeling oder Sentiment Analyse) zu klassifizieren oder zu kategorisieren, und anschließend zu untersuchen, ob das Ergebnis einem objektivem Bewertungskriterium folgt und beispielsweise mit dem Image, dem Aktienkurs oder den Umsatz assoziiert werden kann.
+Ziel der Studienarbeit ist es, die Headlines im ersten Schritt mittels eines Algorithmus (bspw. Topic Modeling oder Sentiment Analyse) zu klassifizieren oder zu kategorisieren, und anschließend zu untersuchen, ob das Ergebnis einem objektivem Bewertungskriterium folgt und beispielsweise mit dem Image, dem Aktienkurs oder den Umsatz des jeweiligen Unternehmens assoziiert werden kann.
 Zur Findung eines Bewertungskriterium müssen weitere Datensätze ergänzt werden.
 
 \section*{Wie sind Sie auf das Thema gekommen? Welche Hintergrundgeschichte führte zu der Forschungsfrage?}
-Der Markt wird immer schnelllebiger, insbesondere der Aktienmarkt erlebt einen immer schnelleren Wandel.\\
+Der Markt wird immer schnelllebiger, insbesondere der Aktienmarkt erlebt einen immer schnelleren Wandel und steigendes Interesse seitens der Anleger:innen.\\
 Die Einflussnahme von Image und Schlagzeilen nimmt dabei ebenfalls ständig zu und die Auswirkungen sind nicht immer vollständig zu erfassen.
 Für Unternehmen ist es von essentieller Bedeutung zu wissen, wie sich Headlines langfristig auf sie selber auswirken. 
 
 \section*{Warum ist dieses Thema bzw. diese Fragestellung untersuchenswert?}
-Dieses Thema ist untersuchenswert, Unternehmen in der Öffentlichkeit stehen und abhängig von Kund:innen sind, die Nachrichten kosumieren. Dementsprechend beeinflussen Nachrichten das Kaufverhalten und damit das Unternehmen. Durch das steigende INteresse der Menschen an Anlagestrategien, werden auch Aktiennews immer wichtiger. Deshalb ist es entscheiden für Unternehmen, erkennen zu können, was für einen Effekt Headlines auf KPIs haben.
+Dieses Thema ist untersuchenswert, da Unternehmen in der Öffentlichkeit stehen und abhängig von Kund:innen sind, die Nachrichten konsumieren. Dementsprechend beeinflussen Nachrichten das Kaufverhalten und damit das Unternehmen. Durch das steigende Interesse der Menschen an Anlagestrategien, werden auch Aktiennews immer wichtiger. Deshalb ist es entscheidend für Unternehmen, erkennen zu können, was für einen Effekt Headlines auf KPIs haben.
 
 \section*{Wer sind die möglichen Akteure? Wer könnte von unserer Forschung profitieren?}
-Die Akteure sind die börsennotierten Unternehmen. Diese können durch die Analyse der Headlines, die ihr Unternehmen betreffen, langfristige Trends erkennen, und so präventiv Maßnahmen treffen, um negative Auswirkungen auf ihre Unternehmen durch bestimmte Headlines zu verhindernn.
+Die Akteure sind die börsennotierten Unternehmen. Diese können durch die Analyse der Headlines, die ihr Unternehmen betreffen, langfristige Trends erkennen, und so präventiv Maßnahmen treffen, um negative Auswirkungen auf ihre Unternehmen durch bestimmte Headlines zu verhindern.
 
 
 \section*{Was wurde in diesem oder einem ähnlichen Gebiet bereits getan?}
-Es wurden bereits einige Analysen bezüglich der Auswirkungen von Headlines auf den Aktienkurs gemacht. Basierend auf Headlines aus der Vegangenheit und der darauf folgenden Kursenwticklung soll vorhergesagt werden, wie sich der Aktienkurs entwickelt, mit dem Ziel, Investitionsentscheidungen etc. zu erleichtern.\\
+Es wurden bereits einige Analysen bezüglich der Auswirkungen von Headlines auf den Aktienkurs gemacht. Basierend auf Headlines aus der Vegangenheit und der darauf folgenden Kursentwicklung soll vorhergesagt werden, wie sich der Aktienkurs entwickelt, mit dem Ziel, Investitionsentscheidungen etc. zu erleichtern.\\
 
-Wir möchten abschließend darauf hinweisen, dass eine konkrete Bewertung der Überschriften anhand der Aktienentwicklung nur mit entsprechenden Finanzdaten möglich ist. Die entsprechenden APIs sind dabei in der Größenordnung des Datensatzes nur kostenpflichtig zu erreichen.
-% \\ see: \url{https://www.kaggle.com/danielstegemann/yahoofinance} \\
+\section*{Froschungsfrage}
+Wir wirken sich Headlines von Aktien News auf deren jeweiligen Kurs aus?
+Inwieweit lässt sich vorhersagen, wie sich Headlines von Aktiennews auf den jeweiligen Kurs der Aktie nach dem Erscheinen der Headlines auswirken? \\
+
+\section*{Was wollen wir machen (mit Literatur)?}
+\begin{itemize}
+    \item Umgang mit kurzen Texten
+    \item Business Case
+    \item Analyse von Aktienkursen basierend auf Texten
+    \item typische Data Science Methoden für Problemstellung
+\end{itemize}
+\section*{Was wollen wir machen (mit den Daten)?}
+\begin{enumerate}
+    \item Datenaufbereitung(Bereinigung etc. ...)
+    \item Aktienkurse dem Datensatz hinzufügen(polygon.io)
+    \item Modell bauen
+    \item Trainieren der Daten
+    \item Testen der Daten
+\end{enumerate}
+
 
 \citep[see][]{yahoofinance} \citep[see][]{econ_topicmodelling}
