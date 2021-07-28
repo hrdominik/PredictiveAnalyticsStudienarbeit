@@ -7,3 +7,5 @@ sklearn
 gensim
 pyLDAvis
 spacy
+polygon-api-client
+python-Levenshtein
