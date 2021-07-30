@@ -9,3 +9,4 @@ pyLDAvis
 spacy
 polygon-api-client
 python-Levenshtein
+python-dotenv
