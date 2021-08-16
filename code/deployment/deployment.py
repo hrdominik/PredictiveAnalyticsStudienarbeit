@@ -13,6 +13,7 @@ from flask import Flask, jsonify
 # from sklearn.externals import joblib
 import joblib
 import preProcessing
+import os
 
 
 # The Flask Server
@@ -49,7 +50,8 @@ def predict():
 # run
 if __name__ == '__main__':
     try:
-        model = joblib.load('model.pkl')
+        dir_path = os.path.dirname(os.path.realpath(__file__))
+        model = joblib.load(dir_path+'\model.pkl')
         apiSTATUS = "<h3 style='color: green;'>API ready</h3>"
     except:
         apiSTATUS = "<h3 style='color: red;'>API not responsible</h3>"
