@@ -7,11 +7,20 @@ import re
 import spacy
 from nltk.corpus import sentiwordnet as swn
 from nltk.corpus import wordnet as wn
+from sentistrength import PySentiStr
+### Workaround for nltk download in Docker
+import ssl
+try:
+    _create_unverified_https_context = ssl._create_unverified_context
+except AttributeError:
+    pass
+else:
+    ssl._create_default_https_context = _create_unverified_https_context
 nltk.download('wordnet')
+nltk.download('stopwords')
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
 nltk.download('sentiwordnet')
-from sentistrength import PySentiStr
 
 # help Functions like in the Notebooks for PreProcessing the Headline
 def tokenize_post(headline):
@@ -81,12 +90,15 @@ def getSentiment(headline):
 def preProcessing(headlines):
     headlines_processed = []
     for headline in headlines:
+        print(headline)
         headline = headline.lower()
         headline = tokenize_post(headline)
         headline = remove_stopwords(headline)
         headline = lemmatize(headline)
         headline = getSynset(headline)
+        print(headline)
         headline_senti_pos, headline_senti_neg = getSentiment(headline)
+        print(headline_senti_pos, headline_senti_neg)
         headlines_processed.append([headline_senti_pos, headline_senti_neg])
 
     return headlines_processed
