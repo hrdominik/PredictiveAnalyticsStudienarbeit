@@ -13,7 +13,7 @@ nltk.download('averaged_perceptron_tagger')
 nltk.download('sentiwordnet')
 from sentistrength import PySentiStr
 
-# help Functions
+# help Functions like in the Notebooks for PreProcessing the Headline
 def tokenize_post(headline):
     hl_tokenz = word_tokenize(headline)
     hl_post = nltk.pos_tag(hl_tokenz)
