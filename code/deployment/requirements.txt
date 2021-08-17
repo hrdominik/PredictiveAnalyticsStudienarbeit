@@ -1,0 +1,7 @@
+numpy
+pandas
+nltk
+spacy
+sklearn
+sentistrength
+flask

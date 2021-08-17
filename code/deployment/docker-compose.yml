@@ -1,0 +1,10 @@
+version: '3.9'
+services:
+  backend:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: predana_api
+    container_name: predAna_backend
+    ports:
+      - "80:80"

@@ -3,6 +3,7 @@ Flask API to serv Model for Prediction of Stockprice-Movement based on Headlines
 
 @author DHR
 """
+__develop__ = False
 # Export the sklearn Model in the Notebook to import it here
 # # from sklearn.externals import joblib
 # # joblib.dump(model, 'model.pkl')
@@ -14,6 +15,7 @@ from flask import Flask, jsonify
 import joblib
 import preProcessing
 import os
+from pathlib import Path
 
 
 # The Flask Server
@@ -35,11 +37,11 @@ def home():
 @app.route('/predict', methods=['POST'])
 def predict():
     # try if headlines are presented correctly
-    try:
-        json_ = request.get_json()
-        query = preProcessing.preProcessing(json_['headlines'])
-    except:
-        abort(400, description="No Headline presented to use for Prediction")
+    # try:
+    json_ = request.get_json()
+    query = preProcessing.preProcessing(json_['headlines'])
+    # except:
+    #     abort(400, description="No Headline presented to use for Prediction")
 
     # predict
     prediction = model.predict(query)
@@ -47,12 +49,15 @@ def predict():
     # Response
     return jsonify({'prediction': prediction[0], 'stockChange': binaryPrediction})
 
-# run
-if __name__ == '__main__':
-    try:
-        dir_path = os.path.dirname(os.path.realpath(__file__))
-        model = joblib.load(dir_path+'\model.pkl')
-        apiSTATUS = "<h3 style='color: green;'>API ready</h3>"
-    except:
-        apiSTATUS = "<h3 style='color: red;'>API not responsible</h3>"
-    app.run(port=8080)
+if __develop__:
+    if __name__ == '__main__':
+        app.run(port=8080)
+try:
+    # dir_path = Path(os.path.realpath(__file__)).parent.parent.absolute()
+    # model = joblib.load(dir_path+'\model.pkl')
+    model = joblib.load('./model.pkl')
+    apiSTATUS = "<h3 style='color: green;'>API ready</h3>"
+except:
+    apiSTATUS = "<h3 style='color: red;'>API not responsible</h3>"
+
+
