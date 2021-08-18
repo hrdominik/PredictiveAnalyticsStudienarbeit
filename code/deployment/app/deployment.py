@@ -3,7 +3,7 @@ Flask API to serv Model for Prediction of Stockprice-Movement based on Headlines
 
 @author DHR
 """
-__develop__ = False
+__develop__ = True
 # Export the sklearn Model in the Notebook to import it here
 # # from sklearn.externals import joblib
 # # joblib.dump(model, 'model.pkl')
@@ -51,7 +51,13 @@ def predict():
 
 if __develop__:
     if __name__ == '__main__':
-        app.run(port=8080)
+        try:
+            dir_path = str(Path(os.path.realpath(__file__)).parent.parent.absolute())
+            model = joblib.load(dir_path+'\model.pkl')
+            apiSTATUS = "<h3 style='color: green;'>API ready</h3>"
+        except:
+            apiSTATUS = "<h3 style='color: red;'>API not responsible</h3>"
+        app.run(port=80)
 try:
     # dir_path = Path(os.path.realpath(__file__)).parent.parent.absolute()
     # model = joblib.load(dir_path+'\model.pkl')
