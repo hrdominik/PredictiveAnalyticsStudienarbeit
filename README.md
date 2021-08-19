@@ -26,7 +26,11 @@ Setup Python venv: <br>(Python 3.9.0 in PATH else use <code>--python "path/to/yo
 Select the Python.exe inside your env as Python Interpreter and as the Kernel in your IDE and in the Jupyter Notebook
 
 ## Git Usage
-Everything on Master
+https://github.com/hrdominik/PredictiveAnalyticsStudienarbeit<br><br>
+Während der Entwicklung war dieses Git-Repo vollständig Privat, zur Abgabe wurde die Öffentliche Leseberechtigung eingestellt. <br>
+Die Abgabe der Studienarbeit erfolgt auf dem Master-Branch <br>
+Die Entwicklung erfolgte größten Teils auf dem devlop-Branch.<br>
+Aufgrund von Inkompatibilität mit Git, wurden die Modelle und exportierten DataFrames (csv) ncht über git geteilt. Zur abgabe wurden diese Hoch geladen.
 
 ## Links
 <a href="https://www.kaggle.com/miguelaenlle/massive-stock-news-analysis-db-for-nlpbacktests">Daily Financial News for 6000+ Stocks, Kaggle</a>
