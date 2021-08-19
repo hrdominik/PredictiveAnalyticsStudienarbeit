@@ -25,4 +25,4 @@ When the API runs local it only has the flask-development-server.<br>
 <br>
 The Dev-Server is Running on http://127.0.0.1:80
 <br>
-You can also turn on Debugging by changing the '__develop__' variable to True. The Server will then Run on Port 8080.
+You can also turn on Debugging by changing the '__develop__' variable to True. The Server will then Run on Port 80.
