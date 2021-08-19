@@ -45,14 +45,16 @@ def predict():
 
     # predict
     prediction = model.predict(query)
-    binaryPrediction = preProcessing.binaryPrediction(prediction[0])
+    binaryPrediction = preProcessing.binaryPrediction(prediction)
+    print(type(prediction.tolist()))
+    print(type(binaryPrediction))
     # Response
-    return jsonify({'prediction': prediction[0], 'stockChange': binaryPrediction})
+    return jsonify({'prediction': prediction.tolist(), 'stockChange': binaryPrediction})
 
 if __develop__:
     if __name__ == '__main__':
         try:
-            dir_path = str(Path(os.path.realpath(__file__)).parent.parent.absolute())
+            dir_path = os.path.dirname(os.path.realpath(__file__))
             model = joblib.load(dir_path+'\model.pkl')
             apiSTATUS = "<h3 style='color: green;'>API ready</h3>"
         except:

@@ -3,11 +3,13 @@ import nltk
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
+import pandas as pd
 import re
 import spacy
 from nltk.corpus import sentiwordnet as swn
 from nltk.corpus import wordnet as wn
 from sentistrength import PySentiStr
+from sklearn.feature_extraction.text import TfidfVectorizer
 ### Workaround for nltk download in Docker
 import ssl
 try:
@@ -82,29 +84,48 @@ def getSentiment(headline):
 
     return senti_pos, senti_neg
 
+# POS tagged and tokenzized Array to String
+def tokenz_in_sentence(headline):
+    word_list = headline[1:-1].split(", ")
+    word_list = [word[1:-6] for word in word_list]
+    sentence = ' '.join(word_list)
+    return sentence
+
+def headline_tf_idf(headline):
+    single_headline_tfidf = pd.DataFrame()
+    feature_list = list(pd.read_csv('./tfidf_features.csv')['0'])
+    for feature in feature_list:
+        idf_value = tfidf_vectorizer.idf_[tfidf_vectorizer.vocabulary_[feature]]
+        count_feature = headline.count(feature)
+        single_headline_tfidf[feature] = [(count_feature / len(headline)) * idf_value]
+    return single_headline_tfidf
 
 
 
 
 # module Functions
 def preProcessing(headlines):
+    tfidf_vectorizer = TfidfVectorizer(analyzer='word', stop_words='english', smooth_idf=True, use_idf=True)
     headlines_processed = []
     for headline in headlines:
-        print(headline)
         headline = headline.lower()
         headline = tokenize_post(headline)
         headline = remove_stopwords(headline)
         headline = lemmatize(headline)
         headline = getSynset(headline)
-        print(headline)
         headline_senti_pos, headline_senti_neg = getSentiment(headline)
-        print(headline_senti_pos, headline_senti_neg)
+        #headline = tokenz_in_sentence(headline) #For TF_IDF
+        #headline_tf_idf = headline_tf_idf(headline)
+        #headlines_processed.append(headline_tf_idf)
         headlines_processed.append([headline_senti_pos, headline_senti_neg])
 
     return headlines_processed
 
-def binaryPrediction(p):
-    p = p * 100
-    if p < 0.5 and p > -0.5: return 0
-    if p >= 0.5: return 1
-    if p <= 0.5: return -1
+def binaryPrediction(pList):
+    pResults = []
+    for p in pList:
+        p = p * 100
+        if p < 0.5 and p > -0.5: pResults.append(0)
+        if p >= 0.5: pResults.append(1)
+        if p <= 0.5: pResults.append(-1)
+    return pResults
