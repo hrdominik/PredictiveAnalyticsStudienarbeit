@@ -15,3 +15,4 @@ pyLDAvis
 python-Levenshtein
 python-dotenv
 flask
+pylint

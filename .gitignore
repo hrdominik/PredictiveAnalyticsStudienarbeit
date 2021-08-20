@@ -156,3 +156,6 @@ data/
 #models
 *.pkl
 *.csv
+
+#abgabe
+Studienarbeit_PredictiveAnalytics_bkasten-dhoehr/

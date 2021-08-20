@@ -1,3 +1,36 @@
 \chapter{Deployment}
+Schlussendlich sollen die Ergebnisse des Modells den Unternehmen und den privat Anlegern zur Verfügung stehen.
+Es soll Möglich sein, die Vorhersage des Modells zur Entwicklung des Aktienpreises schnell und unkompliziert bei Eingabe einer Headline zu erhalten.
+Dies bietet sowohl den Unternehmen als auch den privat Anlegern den Vorteil eine objektive, datenbasierte Einschätzung der veröffentlichten Headline in ihre Entscheidungen am Markt einfließen zu lassen.
 
-Produktiver Einsatz unserer Ergebnisse
+\section{Strategie}
+Um eine möglichst einfache Handhabung zu gewährleisten, wird die Anwendung einfach gehalten: Eine Eingabe, eine Ausgabe.
+Um außerdem den Unternehmen die Möglichkeit zu bieten, die Vorhersage in deren Unternehmensprozesse einzubinden, wird eine serverbasierte Anwendung erstellt, die Ihren Dienst über eine Schnittstelle zur Verfügung stellt. Denkbar ist es, dass Unternehmen neue Aktiennews automatisch sammeln und stetig durch das Modell bewerten lassen. So erhalten Unternehmen schnelles Feedback zu negativen Nachrichten und können entsprechend reagieren.\\
+Durch die einfache API ist es ebenfalls möglich ein Grafisches-User-Interface zu entwickeln und auf die API zu legen, so können auch die private Anleger durch die Lösung erreicht werden.
+Allerdings ist die Auslieferung und die Gestaltung der GUI nicht Teil dieser Studienarbeit.\\
+Erreichbar die API durch einen HTTP-POST auf \textbf{/predict}.
+Übergeben Sie die Headlines als Liste von Strings per \textit{POST, application/json} in folgender Form:
+\begin{verbatim}
+{
+    'headlines': [
+        'Dies ist eine Headline.', 
+        'Dies ist noch eine Headline!'
+    ]
+}
+\end{verbatim}
+Die Antwort erfolgt ebenfalls per JSON in folgender Form:
+\begin{verbatim}
+{
+    'prediction': [-0.627, 0.9965], 
+    'stockChange': [-1, 1]
+}
+\end{verbatim}
+
+\section{Implementation}
+Nach den Schritten des Modelling, wird das trainierte Modell exportiert und statisch zur Verfügung gestellt.
+Ein einfacher Flask-Server basierend auf Python lädt dieses und stellt eine API zur Verfügung.\\
+Wird nun eine oder mehrere Headlines an die Anwendung gesandt, so durch läuft jeder dieser Überschriften die selben Pre-Processing Schritte wie im vorangegangenen Kapitel beschrieben. Nach folgend werden die entsprechenden numerische Werte aus der Headline berechnet und in das Modell eingesetzt. Das Modell liefert eine Vorhersage. Diese wird, zusammen mit der standartisierten Vorhersage (-1, 0 oder 1) als Response auf die Anfrage verpackt und versendet. \\
+Zum produktiven Einsatz, insbesondere der Skalierung, wird die Verwendung eines Anwendungsserver empfohlen. Hier wird uWSGI verwendet, in kombination mit einem Nginx Webserver. Die Tatsache, dass der Server in einem Docker-Container läuft, erleichtert die Auslieferung und die Skalierung. Dennoch ist es möglich, die Anwendung ebenfalls lokal auszuführen. 
+
+\section{Überwachen und Pflegen}
+Um die stetige Weiterentwicklung des Modells zu ermöglichen, benötigt die Anwendung lediglich die exportierte Version des Modells, alle weiteren Schritte der API bleiben auch bei veränderten Modellen gleich. Dies ermöglicht das Austauschen und Verbessern des Modells. Außerdem ermöglicht die Tatsache der reinen containerbasierten Serveranwendung eine gute Skalierbarkeit. Das eigentliche Überwachen der Anwendung obliegt hier dem potenziellen Host.
