@@ -86,14 +86,12 @@ def getSentiment(headline):
 
 # POS tagged and tokenzized Array to String
 def tokenz_in_sentence(headline):
-    word_list = headline[1:-1].split(", ")
-    word_list = [word[1:-6] for word in word_list]
+    word_list = [word[:-5] for word in headline]
     sentence = ' '.join(word_list)
     return sentence
 
-def headline_tf_idf(headline):
+def headline2tf_idf(headline, feature_list, tfidf_vectorizer):
     single_headline_tfidf = pd.DataFrame()
-    feature_list = list(pd.read_csv('./tfidf_features.csv')['0'])
     for feature in feature_list:
         idf_value = tfidf_vectorizer.idf_[tfidf_vectorizer.vocabulary_[feature]]
         count_feature = headline.count(feature)
@@ -104,8 +102,7 @@ def headline_tf_idf(headline):
 
 
 # module Functions
-def preProcessing(headlines):
-    tfidf_vectorizer = TfidfVectorizer(analyzer='word', stop_words='english', smooth_idf=True, use_idf=True)
+def preProcessing(headlines, feature_list, vectorizer):
     headlines_processed = []
     for headline in headlines:
         headline = headline.lower()
@@ -114,10 +111,10 @@ def preProcessing(headlines):
         headline = lemmatize(headline)
         headline = getSynset(headline)
         headline_senti_pos, headline_senti_neg = getSentiment(headline)
-        #headline = tokenz_in_sentence(headline) #For TF_IDF
-        #headline_tf_idf = headline_tf_idf(headline)
-        #headlines_processed.append(headline_tf_idf)
-        headlines_processed.append([headline_senti_pos, headline_senti_neg])
+        headline = tokenz_in_sentence(headline) #For TF_IDF
+        headline_tf_idf = headline2tf_idf(headline, feature_list, vectorizer)
+        headlines_processed.append(headline_tf_idf)
+        # headlines_processed.append([headline_senti_pos, headline_senti_neg])
 
     return headlines_processed
 

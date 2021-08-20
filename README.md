@@ -27,7 +27,7 @@ Select the Python.exe inside your env as Python Interpreter and as the Kernel in
 
 ## Git Usage
 https://github.com/hrdominik/PredictiveAnalyticsStudienarbeit<br><br>
-Während der Entwicklung war dieses Git-Repo vollständig Privat, zur Abgabe wurde die Öffentliche Leseberechtigung eingestellt. <br>
+Während der Entwicklung war dieses Git-Repo vollständig Privat, zur Abgabe wurde ein Release veröffentlicht. <br>
 Die Abgabe der Studienarbeit erfolgt auf dem Master-Branch <br>
 Die Entwicklung erfolgte größten Teils auf dem devlop-Branch.<br>
 Aufgrund von Inkompatibilität mit Git, wurden die Modelle und exportierten DataFrames (csv) ncht über git geteilt. Zur abgabe wurden diese Hoch geladen.
