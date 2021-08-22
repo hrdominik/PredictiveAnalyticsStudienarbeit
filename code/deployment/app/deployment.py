@@ -62,18 +62,20 @@ if __develop__:
             vectorizer = joblib.load(dir_path+'\\tfidf_vectorizer.pkl')
             feature_list = list(pd.read_csv(dir_path+'\\tfidf_features.csv')['0'])
             apiSTATUS = "<h3 style='color: green;'>API ready</h3>"
-            print('[API]: ready')
+            print('[API]: ready, local')
         except:
             apiSTATUS = "<h3 style='color: red;'>API not responsible</h3>"
-            print('[API]: not responsible')
+            print('[API]: not responsible, local')
         app.run(port=80)
 # Docker deployment
 try:
-    model = joblib.load('./tfidf-model.pkl')
+    model = joblib.load('./tfidf_model.pkl')
     vectorizer = joblib.load('./tfidf_vectorizer.pkl')
     feature_list = list(pd.read_csv('./tfidf_features.csv')['0'])
     apiSTATUS = "<h3 style='color: green;'>API ready</h3>"
+    print('[API]: ready, server')
 except:
     apiSTATUS = "<h3 style='color: red;'>API not responsible</h3>"
+    print('[API]: not responsible, server')
 
 
