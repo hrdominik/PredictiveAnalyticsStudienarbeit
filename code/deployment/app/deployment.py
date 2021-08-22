@@ -62,8 +62,10 @@ if __develop__:
             vectorizer = joblib.load(dir_path+'\\tfidf_vectorizer.pkl')
             feature_list = list(pd.read_csv(dir_path+'\\tfidf_features.csv')['0'])
             apiSTATUS = "<h3 style='color: green;'>API ready</h3>"
+            print('[API]: ready')
         except:
             apiSTATUS = "<h3 style='color: red;'>API not responsible</h3>"
+            print('[API]: not responsible')
         app.run(port=80)
 # Docker deployment
 try:

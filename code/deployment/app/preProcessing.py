@@ -121,8 +121,6 @@ def preProcessing(headlines, feature_list, vectorizer):
 def binaryPrediction(pList):
     pResults = []
     for p in pList:
-        p = p * 100
-        if p < 0.5 and p > -0.5: pResults.append(0)
-        if p >= 0.5: pResults.append(1)
-        if p <= 0.5: pResults.append(-1)
+        if p >= 1: pResults.append(1)
+        if p < 1: pResults.append(0)
     return pResults
